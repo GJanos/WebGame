@@ -59,7 +59,6 @@ buttonFetch.addEventListener("click", async (e) => {
 
   const objToSend = JSON.stringify({
     method: "FETCH",
-    buttonString: document.getElementById("nameField").value,
   });
   console.log(objToSend);
 
@@ -70,9 +69,7 @@ buttonFetch.addEventListener("click", async (e) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      //place one input for each of the received datas
-      console.log(data);
-      buttonString.textContent = data.buttonString;
+      console.log(data[0]);
     })
     .catch((e) => console.error(e));
 });
@@ -83,5 +80,11 @@ buttonUpdate.addEventListener("click", async (e) => {
   fetch(`${BASEURL}update`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-  }).catch((e) => console.error(e));
+    body: JSON.stringify({ method: "UPDATE" }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((e) => console.error(e));
 });

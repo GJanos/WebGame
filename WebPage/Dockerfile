@@ -1,6 +1,6 @@
 # taking care of copying installing image and running server
 FROM mhart/alpine-node:16
-EXPOSE 8081
+EXPOSE 8079
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
