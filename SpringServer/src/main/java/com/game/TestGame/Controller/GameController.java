@@ -26,13 +26,13 @@ public class GameController {
 
     @GetMapping("/")
     public String def() {
-        log.info("posttt shit");
+        log.info("post");
 
-        Student student = new Student("andrasi2",
-                "benedek",
+        Student student = new Student("joe",
+                "doe",
                 new Address("hungary",
                         "nyiregyhaza"),
-                List.of("sut the", "fuck up"));
+                List.of("debug", "message"));
         repo.save(student);
 
 
@@ -56,7 +56,7 @@ public class GameController {
     @PostMapping("/fetch")
     public ResponseEntity<List<Student>> fetch(@RequestBody Request req) {
         if(req.getMethod().equals("FETCH")){
-            log.info("fetch shit");
+            log.info("fetch ");
             ArrayList<Student> students = (ArrayList<Student>) repo.findAll();
             return ResponseEntity.ok(students);
         }
@@ -70,13 +70,13 @@ public class GameController {
     @PostMapping("/update")
     public ResponseEntity<Response> update(@RequestBody Request req) {
         if(req.getMethod().equals("UPDATE")){
-            log.info("update shit");
+            log.info("update ");
             repo.save(
-                    new Student("andrasi3",
-                            "benedek",
+                    new Student("joeen",
+                            "doees",
                             new Address("hungary",
                                     "nyiregyhaza"),
-                            List.of("sut the", "fuck up")));
+                            List.of("debug", "message"));
             return ResponseEntity.ok(new Response("SUCCESSFUL UPDATE"));
         }
 
